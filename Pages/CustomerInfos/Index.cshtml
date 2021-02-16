@@ -1,0 +1,54 @@
+﻿@page
+@model GroupRazorPagesVideoGame.Pages.CustomerInfos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerInfo[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerInfo[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerInfo[0].PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerInfo[0].Address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.CustomerInfo) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
